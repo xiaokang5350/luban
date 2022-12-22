@@ -12,6 +12,7 @@ pub struct Vector2 {
     pub y:f32,
 }
 
+#[allow(dead_code)]
 impl Vector2 {
     pub fn new(__js:&json::JsonValue) -> Result<Vector2, LoadError> {
         Ok(Vector2{
@@ -28,6 +29,7 @@ pub struct Vector3 {
     pub z:f32,
 }
 
+#[allow(dead_code)]
 impl Vector3 {
     pub fn new(__js:&json::JsonValue) -> Result<Vector3, LoadError> {
         Ok(Vector3{
@@ -47,6 +49,7 @@ pub struct Vector4 {
 }
 
 
+#[allow(dead_code)]
 impl Vector4 {
     pub fn new(__js:&json::JsonValue) -> Result<Vector4, LoadError> {
         Ok(Vector4{

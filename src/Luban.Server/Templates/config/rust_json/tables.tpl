@@ -4,8 +4,6 @@
     tables = x.tables
 }}
 
-type JsonLoader = fn(&str) -> Result<json::JsonValue, LoadError>;
-
 #[allow(non_camel_case_types)]
 pub struct {{name}} {
     {{~ for table in tables ~}}
@@ -21,7 +19,7 @@ pub struct {{name}} {
 
 impl {{name}} {
     #[allow(dead_code)]
-    pub fn new(loader: JsonLoader) -> std::result::Result<Tables, LoadError> {
+    pub fn new<F: Fn(&str) -> Result<json::JsonValue, LoadError>>(loader: F) -> std::result::Result<Tables, LoadError> {
         let tables = Tables {
         {{~for table in tables ~}}
             {{string.downcase table.name}}: {{table.rust_full_name}}::new(&loader("{{table.output_data_file}}")?)?,
